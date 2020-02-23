@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -49,7 +50,10 @@ public class ChromeCheck {
 				try {
 					WebElement pageElement = internalDriver.findElement(By.cssSelector(selector));
 					if(pageElement.getTagName().equals("img")) {
-						
+						Boolean isImageLoaded = (Boolean) ((JavascriptExecutor)internalDriver).executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", element);
+						if(!isImageLoaded) {
+							results.add(new CheckResult(level.equals(ERROR_LEVEL), selector, "Image not loaded"));							
+						}
 					}
 				} catch (NoSuchElementException e) {
 					results.add(new CheckResult(level.equals(ERROR_LEVEL), selector, e.getMessage()));
