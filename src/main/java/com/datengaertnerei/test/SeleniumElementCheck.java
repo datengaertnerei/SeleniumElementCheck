@@ -2,6 +2,8 @@ package com.datengaertnerei.test;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -22,10 +24,16 @@ public class SeleniumElementCheck {
 	private static final String CHECK_TAG = "check";
 
 	public static void main(String[] args) {
+
+		if (args.length != 1 || Files.notExists(Path.of(args[0]))) {
+			System.out.println("ERROR: no config file");
+			System.exit(3);
+		} 
+
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		try {
 			DocumentBuilder builder = factory.newDocumentBuilder();
-			Document document = builder.parse(new File("config.xml"));
+			Document document = builder.parse(new File(args[0]));
 
 			CheckResultList<CheckResult> allResults = runSeleniumChecks(document);
 
@@ -76,7 +84,7 @@ public class SeleniumElementCheck {
 				allResults.addAll(checkResults);
 			}
 		}
-				
+
 		return allResults;
 	}
 
