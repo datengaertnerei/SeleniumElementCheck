@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<checks>
+	<check url="http://www.automationpractice.com/">
+		<element selector="#header_logo > a > img" level="warn" />
+		<element selector="#social_block > ul > li.google-plus > a"
+			level="error" />
+	</check>
+	<check url="http://www.automationpractice.com/"
+		mobileDevice="Pixel 2">
+		<element selector="#header_logo > a > img" level="warn" />
+		<element selector="#social_block > ul > li.google-plus > a"
+			level="error" />
+	</check>
+</checks>

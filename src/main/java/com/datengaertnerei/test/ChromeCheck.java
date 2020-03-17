@@ -50,12 +50,13 @@ public class ChromeCheck {
 				try {
 					WebElement pageElement = internalDriver.findElement(By.cssSelector(selector));
 					if(pageElement.getTagName().equals("img")) {
-						Boolean isImageLoaded = (Boolean) ((JavascriptExecutor)internalDriver).executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", element);
+						Boolean isImageLoaded = (Boolean) ((JavascriptExecutor)internalDriver).executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", pageElement);
+						
 						if(!isImageLoaded) {
 							results.add(new CheckResult(level.equals(ERROR_LEVEL), selector, "Image not loaded"));							
 						}
 					}
-				} catch (NoSuchElementException e) {
+				} catch (NoSuchElementException | IllegalArgumentException e) {
 					results.add(new CheckResult(level.equals(ERROR_LEVEL), selector, e.getMessage()));
 				}
 			} 

@@ -65,6 +65,7 @@
 						<configuration>
 							<minimizeJar>true</minimizeJar>
 							<createDependencyReducedPom>true</createDependencyReducedPom>
+							<outputFile>${project.basedir}/plugin/SeleniumCheck.jar</outputFile>
 							<dependencyReducedPomLocation>
 								${java.io.tmpdir}/dependency-reduced-pom.xml
 							</dependencyReducedPomLocation>
