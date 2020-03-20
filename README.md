@@ -37,6 +37,9 @@ You can now use that command in any new service definition.
 
 ## PhantomJS instead of Chrome
 
+Selenium 4 dropped PhantomJS support so this tool uses Chrome (widely available and standard browser for a majority of people). 
+If you switch back to the latest stable Selenium 3 release and change a few lines, you can use PhantomJS as Chrome replacement. But you will lose the mobile device emulation option. 
+
 ```
 		WebDriverManager.phantomjs().setup();
 ```
