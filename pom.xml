@@ -68,16 +68,6 @@
 							<goal>shade</goal>
 						</goals>
 						<configuration>
-							<minimizeJar>true</minimizeJar>
-							<filters>
-								<filter>
-									<artifact>commons-logging:commons-logging</artifact>
-									<includes>
-										<include>org/apache/commons/logging/**</include>
-									</includes>
-								</filter>
-							</filters>
-							<createDependencyReducedPom>true</createDependencyReducedPom>
 							<outputFile>${project.basedir}/plugin/SeleniumCheck.jar</outputFile>
 							<dependencyReducedPomLocation>
 								${java.io.tmpdir}/dependency-reduced-pom.xml
