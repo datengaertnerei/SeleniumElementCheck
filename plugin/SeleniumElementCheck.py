@@ -21,7 +21,7 @@ options.add_argument('--disable-features=VizDisplayCompositor')
 
 # setup webdriver (executable for chromedriver must be available in path
 try:
-    driver = webdriver.Chrome(executable_path='d:\develop\chromedriver.exe', options=options)
+    driver = webdriver.Chrome(options=options)
 except SessionNotCreatedException:
     print('UNKNOWN: could not init webdriver')
     sys.exit(3)
